@@ -1,10 +1,10 @@
 import java.util.function.Predicate;
 
 public class PersonBuilder{
-    protected String name;
-    protected String surname;
-    protected int age;
-    protected String address;
+    private String name;
+    private String surname;
+    private int age;
+    private String address;
 
     public PersonBuilder() {
 
@@ -34,15 +34,30 @@ public class PersonBuilder{
         return this;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
     public Person build() {
         Person person = new Person(this);
-
-        /*if (person.getAge() < 0) {
+        if (person.getAge() < 0) {
             throw new IllegalArgumentException("Не допустимый возраст для " + this.name);
         }
         if (!person.hasAge()) {
             throw new IllegalArgumentException("Не указан возраст для " + this.name);
-        }*/
+        }
         return person;
     }
 }

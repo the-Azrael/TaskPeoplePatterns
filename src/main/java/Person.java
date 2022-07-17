@@ -12,10 +12,10 @@ public class Person {
     }
 
     public Person(PersonBuilder personBuilder) {
-        this.name = personBuilder.name;
-        this.surname = personBuilder.surname;
-        this.age = personBuilder.age;
-        this.address = personBuilder.address;
+        this.name = personBuilder.getName();
+        this.surname = personBuilder.getSurname();
+        this.age = personBuilder.getAge();
+        this.address = personBuilder.getAddress();
     }
 
     public Person(String name, String surname) {
