@@ -9,7 +9,6 @@ public class PersonBuilder{
     public PersonBuilder() {
 
     }
-
     private boolean hasNameAndSurname() {
         return this.name != null && this.surname != null;
     }
@@ -25,6 +24,9 @@ public class PersonBuilder{
     }
 
     public PersonBuilder setAge(int age) {
+        if (age < 0) {
+            throw new IllegalArgumentException("Не допустимый возраст для " + this.name);
+        }
         this.age = age;
         return this;
     }
@@ -51,13 +53,11 @@ public class PersonBuilder{
     }
 
     public Person build() {
-        Person person = new Person(this);
-        if (person.getAge() < 0) {
-            throw new IllegalArgumentException("Не допустимый возраст для " + this.name);
+        if (hasNameAndSurname()) {
+            Person person = new Person(this);
+            return person;
+        } else {
+            throw new IllegalArgumentException("Не хватает обязательных полей " + this.name);
         }
-        if (!person.hasAge()) {
-            throw new IllegalArgumentException("Не указан возраст для " + this.name);
-        }
-        return person;
     }
 }
